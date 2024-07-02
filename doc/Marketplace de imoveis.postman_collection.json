@@ -1,0 +1,80 @@
+{
+	"info": {
+		"_postman_id": "6005f0bb-ebc1-4ab0-8816-78f132a2f51f",
+		"name": "Marketplace de imoveis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6395743"
+	},
+	"item": [
+		{
+			"name": "Lista Imoveis",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Busca por id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/imoveis/123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"imoveis",
+						"123"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cria Imovel",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"origin\": \"Marcos Otero\",\r\n    \"externalId\": \"12345\",\r\n    \"price\": 345678.90,\r\n    \"images\": [\r\n        {\r\n            \"url\": \"http://example.com/newimage1.jpg\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/imoveis",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"imoveis"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
