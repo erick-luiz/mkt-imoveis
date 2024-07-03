@@ -1,5 +1,6 @@
 package com.mkt.imobiliaria.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mkt.imobiliaria.model.Image;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,12 +12,15 @@ import java.util.Date;
 public class ImageDTO {
     private Long imageId;
     private String url;
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Date created;
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+
     private Date updated;
 
     public static ImageDTO fromEntity(Image image) {
         ImageDTO dto = new ImageDTO();
-        dto.setImageId(image.getImageId());
+        dto.setImageId(image.getId());
         dto.setUrl(image.getUrl());
         dto.setCreated(image.getCreated());
         dto.setUpdated(image.getUpdated());
@@ -24,12 +28,7 @@ public class ImageDTO {
     }
 
     public Image toEntity() {
-        Image image = new Image();
-        image.setImageId(this.getImageId());
-        image.setUrl(this.getUrl());
-        image.setCreated(this.getCreated());
-        image.setUpdated(this.getUpdated());
-        return image;
+        return new Image(this.getUrl());
     }
 
 }

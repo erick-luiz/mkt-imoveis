@@ -13,18 +13,24 @@ import java.util.List;
 @Getter
 @Setter
 public class Imovel {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long imovelId;
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="imovel_sequence")
+    @SequenceGenerator(name="imovel_sequence", sequenceName="imovel_seq", allocationSize = 1)
+    @Column(name = "IMOVEL_ID", nullable = false)
+    private Long id;
 
     private String origin;
     private String externalId;
     private BigDecimal price;
-    private Date created;
-    private Date updated;
 
     @OneToMany(mappedBy = "imovel", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Image> images;
+
+    @Column(name = "created", insertable = false, updatable = false)
+    private Date created;
+    @Column(name = "updated", insertable = false, updatable = false)
+    private Date updated;
 
 }
 
