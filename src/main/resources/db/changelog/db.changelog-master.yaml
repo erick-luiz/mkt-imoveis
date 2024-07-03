@@ -1,5 +1,10 @@
 databaseChangeLog:
   - include:
-      file: db/sql/imovel.sql
+      file: db/sql/funcs.sql
   - include:
-      file: db/sql/image.sql
+      file: db/sql/tabela-imovel.sql
+  - include:
+      file: db/sql/tabela-image.sql
+  - include:
+      file: db/sql/sequencia.sql
+
