@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 public class ImovelDTO {
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long imovelId;
     private String origin;
     private String externalId;

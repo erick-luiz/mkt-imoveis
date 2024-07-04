@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.Optional;
 
 @RestController
@@ -35,7 +36,10 @@ public class ImovelController {
     @PostMapping
     public ResponseEntity<ImovelDTO> createImovel(@RequestBody ImovelDTO imovelDTO) {
         Imovel imovel = imovelService.createImovel(imovelDTO.toEntity());
-        return new ResponseEntity<>(ImovelDTO.fromEntity(imovel), HttpStatus.CREATED);
+        imovelDTO.setImovelId(imovel.getId());
+        imovelDTO.setCreated(new Date());
+        imovelDTO.setUpdated(new Date());
+        return new ResponseEntity<>(imovelDTO, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
