@@ -58,9 +58,47 @@ Após conectar no server crie o banco imobiliaria.
 * Preencha os dados: 
   * **Name**: Main (ou outro a seu critério)
   * **JDK** or JRE: Java 17 ou superior 
-  * **Module**: imobiliaria.imobiliaria.main~1 
+  * **Module**: imobiliaria.imobiliaria.main
   * **Main Class**: com.mkt.imobiliaria.ImobiliariaApplication
   * **Variaveis de Ambiente**: 
-    * DB_URL: jdbc:postgresql://localhost:5432/imobiliaria
+    * DB_URL=jdbc:postgresql://localhost:5432/imobiliaria;
     * POSTGRES_USER=postgres;
     * POSTGRES_PASSWORD=postgres
+
+# 🔧 Code Style (Configure sua IDE)
+
+* Configurando o numero de espaços do TAB
+  * File > settings > Editor > Code Style > Java > Tabs and Idents
+    * Tab size: 4
+    * Ident: 4
+    * Continuation ident: 8
+
+* Configurando os imports
+  * File > settings > Editor > Code Style > Java > Imports
+    * Class count to use import with '*': 999 (Isso evita uso de *)
+    * Name count to use static import with '*': 999
+
+* Configurando os imports automaticos e a reordenação
+  * File > settings > Editor > General > Auto Imports
+    * Marque a opção: Optimize imports on the fly 
+
+# Teste Local 
+ 
+Após inicializar o serviço voce pode testar as interações com imoveis utilizando a coleção do postmam que está
+dentro da pasta /doc. 
+
+Como para cadastrar um imovel é necessário ter uma imobiliaria cadastrada, use o sql abaixo para ter a 
+imobiliaria e seu respectivo endereco cadastrados: 
+
+_Criando o endereço _
+```sql
+INSERT INTO endereco (endereco_id, logradouro, numero, complemento, bairro, cidade, estado, cep, data_de_atualizacao, data_de_criacao)
+VALUES
+(nextval('endereco_seq'), 'Rua Teste', '100', 'Apto 101', 'Centro', 'São Paulo', 'SP', '01000-000', NOW(), NOW());
+```
+_Com o id do endereço criado, crie a imobiliaria_
+```sql
+INSERT INTO imobiliaria (imobiliaria_id, endereco_id, logotipo, nome, contato, data_de_atualizacao, data_de_criacao)
+VALUES
+(nextval('imobiliaria_seq'), currval('endereco_seq'), 'caminho/do/logotipo.png', 'Imobiliária Teste', '(11) 98765-4321', NOW(), NOW());
+```

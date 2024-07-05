@@ -1,47 +1,54 @@
 package com.mkt.imobiliaria.controller;
 
 import com.mkt.imobiliaria.dto.ImovelDTO;
+import com.mkt.imobiliaria.mapper.ImovelMapper;
 import com.mkt.imobiliaria.model.Imovel;
 import com.mkt.imobiliaria.service.ImovelService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/api/imoveis")
+@RequiredArgsConstructor
 public class ImovelController {
-    @Autowired
-    private ImovelService imovelService;
+
+    private final ImovelService imovelService;
 
     @GetMapping
-    public ResponseEntity<Page<ImovelDTO>> getAllImoveis(Pageable pageable) {
-        Page<Imovel> imoveis = imovelService.getAllImoveis(pageable);
-        Page<ImovelDTO> imovelDTOs = imoveis.map(ImovelDTO::fromEntity);
-        return new ResponseEntity<>(imovelDTOs, HttpStatus.OK);
+    public Page<ImovelDTO> getAllImoveis(Pageable pageable) {
+        return imovelService.getAllImoveis(pageable).map(ImovelMapper::toDTO);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ImovelDTO> getImovelById(@PathVariable Long id) {
-        Optional<Imovel> imovel = imovelService.getImovelById(id);
-        return imovel.map(value -> new ResponseEntity<>(ImovelDTO.fromEntity(value), HttpStatus.OK))
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    public ImovelDTO getImovelById(@PathVariable Long id) {
+        return imovelService.getImovelById(id).map(ImovelMapper::toDTO)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Imovel não encontrado"));
     }
 
     @PostMapping
-    public ResponseEntity<ImovelDTO> createImovel(@RequestBody ImovelDTO imovelDTO) {
-        Imovel imovel = imovelService.createImovel(imovelDTO.toEntity());
-        return new ResponseEntity<>(ImovelDTO.fromEntity(imovel), HttpStatus.CREATED);
+    @ResponseStatus(HttpStatus.CREATED)
+    public ImovelDTO createImovel(@RequestBody ImovelDTO imovelDTO) {
+
+        Imovel imovel = imovelService.createImovel(ImovelMapper.toEntity(imovelDTO));
+
+        return ImovelMapper.toDTO(imovel);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteImovel(@PathVariable Long id) {
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteImovel(@PathVariable Long id) {
         imovelService.deleteImovel(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
 

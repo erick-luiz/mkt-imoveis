@@ -1,10 +1,15 @@
 databaseChangeLog:
   - include:
-      file: db/sql/funcs.sql
+      file: db/sql/funcoes/funcs.sql
   - include:
-      file: db/sql/tabela-imovel.sql
+      file: db/sql/sequencias/sequencia.sql
   - include:
-      file: db/sql/tabela-image.sql
+      file: db/sql/tabelas/endereco.sql
   - include:
-      file: db/sql/sequencia.sql
-
+      file: db/sql/tabelas/imovel.sql
+  - include:
+      file: db/sql/tabelas/imobiliaria.sql
+  - include:
+      file: db/sql/tabelas/imobiliaria_imovel.sql
+  - include:
+      file: db/sql/tabelas/imagem.sql
