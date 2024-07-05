@@ -49,5 +49,10 @@ public class Imovel {
     @JoinColumn(name = "endereco_id", referencedColumnName = "endereco_id")
     private Endereco endereco;
 
+    @Column(name = "created", insertable = false, updatable = false)
+    private Date created;
+    @Column(name = "updated", insertable = false, updatable = false)
+    private Date updated;
+
 }
 
