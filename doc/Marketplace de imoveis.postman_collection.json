@@ -32,7 +32,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/imoveis/123",
+					"raw": "http://localhost:8080/api/imoveis/1004",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -41,11 +41,68 @@
 					"path": [
 						"api",
 						"imoveis",
-						"123"
+						"1004"
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "200 ok",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/imoveis/1004",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"imoveis",
+								"1004"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 05 Jul 2024 08:51:49 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1004,\n    \"areaConstruida\": 120,\n    \"codigo\": \"IMV12345\",\n    \"precoAluguel\": 2500,\n    \"precoVenda\": 500000,\n    \"qtdBanheiros\": 2,\n    \"qtdQuartos\": 3,\n    \"qtdSuites\": 1,\n    \"qtdVagas\": 2,\n    \"tamanhoTotal\": 150,\n    \"tipoDeOperacao\": \"VENDA\",\n    \"tipoImovel\": \"APARTAMENTO\",\n    \"dataDeCriacao\": \"2024-07-05T03:00:00.000+00:00\",\n    \"dataDeAtualizacao\": \"2024-07-05T03:00:00.000+00:00\",\n    \"imobiliarias\": [],\n    \"imagens\": [\n        \"https://example.com/image1.jpg\"\n    ],\n    \"endereco\": {\n        \"id\": 3006,\n        \"logradouro\": \"Rua Exemplo\",\n        \"numero\": \"123\",\n        \"complemento\": \"Apto 456\",\n        \"bairro\": \"Centro\",\n        \"cidade\": \"São Paulo\",\n        \"estado\": \"SP\",\n        \"cep\": \"12345678  \",\n        \"dataDeCriacao\": \"2024-07-05T03:00:00.000+00:00\",\n        \"dataDeAtualizacao\": \"2024-07-05T03:00:00.000+00:00\"\n    }\n}"
+				}
+			]
 		},
 		{
 			"name": "Cria Imovel",
@@ -54,7 +111,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"origin\": \"Marcos Otero\",\r\n    \"externalId\": \"12345\",\r\n    \"price\": 345678.90,\r\n    \"images\": [\r\n        {\r\n            \"url\": \"http://example.com/newimage1.jpg\"\r\n        }\r\n    ]\r\n}",
+					"raw": "{\r\n  \"areaConstruida\": 120,\r\n  \"codigo\": \"IMV12345\",\r\n  \"precoAluguel\": 2500.00,\r\n  \"precoVenda\": 500000.00,\r\n  \"qtdBanheiros\": 2,\r\n  \"qtdQuartos\": 3,\r\n  \"qtdSuites\": 1,\r\n  \"qtdVagas\": 2,\r\n  \"tamanhoTotal\": 150,\r\n  \"tipoDeOperacao\": \"VENDA\",\r\n  \"tipoImovel\": \"APARTAMENTO\",\r\n  \"imobiliarias\": [1],\r\n  \"imagens\": [ \"https://example.com/image1.jpg\"  ],\r\n  \"endereco\": {\r\n    \"logradouro\": \"Rua Exemplo\",\r\n    \"numero\": \"123\",\r\n    \"complemento\": \"Apto 456\",\r\n    \"bairro\": \"Centro\",\r\n    \"cidade\": \"São Paulo\",\r\n    \"estado\": \"SP\",\r\n    \"cep\": \"12345-678\"\r\n  }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -74,7 +131,63 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Exemplo de 201",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"areaConstruida\": 120,\r\n  \"codigo\": \"IMV12345\",\r\n  \"precoAluguel\": 2500.00,\r\n  \"precoVenda\": 500000.00,\r\n  \"qtdBanheiros\": 2,\r\n  \"qtdQuartos\": 3,\r\n  \"qtdSuites\": 1,\r\n  \"qtdVagas\": 2,\r\n  \"tamanhoTotal\": 150,\r\n  \"tipoDeOperacao\": \"VENDA\",\r\n  \"tipoImovel\": \"APARTAMENTO\",\r\n  \"imobiliarias\": [3000],\r\n  \"imagens\": [ \"https://example.com/image1.jpg\"  ],\r\n  \"endereco\": {\r\n    \"logradouro\": \"Rua Exemplo\",\r\n    \"numero\": \"123\",\r\n    \"complemento\": \"Apto 456\",\r\n    \"bairro\": \"Centro\",\r\n    \"cidade\": \"São Paulo\",\r\n    \"estado\": \"SP\",\r\n    \"cep\": \"12345678\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/imoveis",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"imoveis"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 05 Jul 2024 08:50:31 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1004,\n    \"areaConstruida\": 120,\n    \"codigo\": \"IMV12345\",\n    \"precoAluguel\": 2500,\n    \"precoVenda\": 500000,\n    \"qtdBanheiros\": 2,\n    \"qtdQuartos\": 3,\n    \"qtdSuites\": 1,\n    \"qtdVagas\": 2,\n    \"tamanhoTotal\": 150,\n    \"tipoDeOperacao\": \"VENDA\",\n    \"tipoImovel\": \"APARTAMENTO\",\n    \"dataDeCriacao\": null,\n    \"dataDeAtualizacao\": null,\n    \"imobiliarias\": [\n        3000\n    ],\n    \"imagens\": [],\n    \"endereco\": {\n        \"id\": 3006,\n        \"logradouro\": \"Rua Exemplo\",\n        \"numero\": \"123\",\n        \"complemento\": \"Apto 456\",\n        \"bairro\": \"Centro\",\n        \"cidade\": \"São Paulo\",\n        \"estado\": \"SP\",\n        \"cep\": \"12345678\",\n        \"dataDeCriacao\": null,\n        \"dataDeAtualizacao\": null\n    }\n}"
+				}
+			]
 		}
 	]
 }
