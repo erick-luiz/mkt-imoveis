@@ -61,7 +61,7 @@ Após conectar no server crie o banco imobiliaria.
   * **Module**: imobiliaria.imobiliaria.main
   * **Main Class**: com.mkt.imobiliaria.ImobiliariaApplication
   * **Variaveis de Ambiente**: 
-    * DB_URL=jdbc:postgresql://localhost:5432/imobiliaria;
+    * DB_URL=jdbc:postgresql://localhost:5432/realestate;
     * POSTGRES_USER=postgres;
     * POSTGRES_PASSWORD=postgres
 
