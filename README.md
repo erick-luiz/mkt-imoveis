@@ -49,7 +49,7 @@ Na aba "Connection":
 
 IMPORTANTE: como você está rodando o postgres via docker é crucial verificar se o postgres não está rodando no local antes e finalizá-lo. 
 
-Após conectar no server crie o banco imobiliaria. 
+Após conectar no server crie o banco "realestate". 
 
 ### Configurando o Serviço no intelij 
 
