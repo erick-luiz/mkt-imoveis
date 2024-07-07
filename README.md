@@ -1,8 +1,8 @@
 # 🏠 Marketplace Imobiliario 
 
-Este projeto visa unificar as ofertas imobiliarias distribuidas nos sites das corretoras. 
+Este projeto visa unificar as ofertas imobiliárias distribuídas nos sites das corretoras. 
 Em cidades interioranas é bem comum vermos sites de pouca qualidade quando estamos procurando um lugar para alugar ou mesmo comprar. 
-A ideia aqui é unificar as informações sobre os imoveis e apresentar de uma forma mais intuitiva e facilitada para o usuário final, 
+A ideia aqui é unificar as informações sobre os imóveis e apresentar de uma forma mais intuitiva e facilitada para o usuário final, 
 permitindo que ele acesse o link original da publicação. 
 
 
@@ -14,7 +14,7 @@ permitindo que ele acesse o link original da publicação.
 ### 🐋 Docker 
 
 Como descrito no tópico anterior o docker é um pré-requisito para 
-rodar este serviço. As dependencias como banco de dados, sistema de 
+rodar este serviço. As dependências como banco de dados, sistema de 
 mock, etc... estarão rodando via docker compose. 
 
 Para isso navegue até a pasta do projeto e rode o comando: 
@@ -29,9 +29,9 @@ e irá subir os containers delas.
 Após rodar o docker compose você poderá acessar o PGAdmin que é uma das imagens inclusas no docker-compose file. 
 
 Para isso vá no navegador e acesse localhost:5050. 
-O usuario padrão é pgadmin@example.com e a senha padrão é admin.
+O usuário padrão é pgadmin@example.com e a senha padrão é admin.
 
-Estes são configurações padrões que você pode mudar setando as variaveis de ambiente: 
+Estas são configurações padrões que você pode mudar setando as variáveis de ambiente: 
 * 👤 PGADMIN_DEFAULT_EMAIL
 * 🔑 PGADMIN_DEFAULT_PASSWORD
 
@@ -47,7 +47,7 @@ Na aba "Connection":
    1. Username: 👤 POSTGRES_USER definido no docker-compose.yml (postgres por padrão)
    1. Password: 🔑 POSTGRES_PASSWORD definido no docker-compose.yml (postgres por padrão) 
 
-IMPORTANTE: como você está rodando o postgres via docker é crucial verificar se o postgres não está rodando no local antes e finalizalo. 
+IMPORTANTE: como você está rodando o postgres via docker é crucial verificar se o postgres não está rodando no local antes e finalizá-lo. 
 
 Após conectar no server crie o banco imobiliaria. 
 
@@ -67,7 +67,7 @@ Após conectar no server crie o banco imobiliaria.
 
 # 🔧 Code Style (Configure sua IDE)
 
-* Configurando o numero de espaços do TAB
+* Configurando o número de espaços do TAB
   * File > settings > Editor > Code Style > Java > Tabs and Idents
     * Tab size: 4
     * Ident: 4
@@ -78,25 +78,25 @@ Após conectar no server crie o banco imobiliaria.
     * Class count to use import with '*': 999 (Isso evita uso de *)
     * Name count to use static import with '*': 999
 
-* Configurando os imports automaticos e a reordenação
+* Configurando os imports automáticos e a reordenação
   * File > settings > Editor > General > Auto Imports
     * Marque a opção: Optimize imports on the fly 
 
 # Teste Local 
  
-Após inicializar o serviço voce pode testar as interações com imoveis utilizando a coleção do postmam que está
+Após inicializar o serviço você pode testar as interações com imóveis utilizando a coleção do postman que está
 dentro da pasta /doc. 
 
-Como para cadastrar um imovel é necessário ter uma imobiliaria cadastrada, use o sql abaixo para ter a 
-imobiliaria e seu respectivo endereco cadastrados: 
+Como para cadastrar um imóvel é necessário ter uma imobiliária cadastrada, use o sql abaixo para ter a 
+imobiliária e seu respectivo endereço cadastrados: 
 
-_Criando o endereço _
+_Criando o endereço_
 ```sql
 INSERT INTO endereco (endereco_id, logradouro, numero, complemento, bairro, cidade, estado, cep, data_de_atualizacao, data_de_criacao)
 VALUES
 (nextval('endereco_seq'), 'Rua Teste', '100', 'Apto 101', 'Centro', 'São Paulo', 'SP', '01000-000', NOW(), NOW());
 ```
-_Com o id do endereço criado, crie a imobiliaria_
+_Com o id do endereço criado, crie a imobiliária_
 ```sql
 INSERT INTO imobiliaria (imobiliaria_id, endereco_id, logotipo, nome, contato, data_de_atualizacao, data_de_criacao)
 VALUES
