@@ -49,7 +49,7 @@ Na aba "Connection":
 
 IMPORTANTE: como você está rodando o postgres via docker é crucial verificar se o postgres não está rodando no local antes e finalizá-lo. 
 
-Após conectar no server crie o banco imobiliaria. 
+Após conectar no server crie o banco "realestate". 
 
 ### Configurando o Serviço no intelij 
 
@@ -61,7 +61,7 @@ Após conectar no server crie o banco imobiliaria.
   * **Module**: imobiliaria.imobiliaria.main
   * **Main Class**: com.mkt.imobiliaria.ImobiliariaApplication
   * **Variaveis de Ambiente**: 
-    * DB_URL=jdbc:postgresql://localhost:5432/imobiliaria;
+    * DB_URL=jdbc:postgresql://localhost:5432/realestate;
     * POSTGRES_USER=postgres;
     * POSTGRES_PASSWORD=postgres
 
